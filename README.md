@@ -2,7 +2,7 @@
 
 This plugin introduces a new linemode that prefixes file names with a file icon
 
-TODO: add screenshot
+![image](https://raw.githubusercontent.com/alexanderjeurissen/ranger_devicons/master/screenshot.png)
 
 ## Install instructions
 A makefile is included to install and uninstall this plugin. to install simply run:

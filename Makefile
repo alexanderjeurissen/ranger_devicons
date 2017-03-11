@@ -5,6 +5,7 @@ install:
 	install -d $(PLUGIN_DIR)
 	install -b devicons.py $(RANGER_DIR)/devicons.py
 	install -b devicons_linemode.py $(PLUGIN_DIR)/devicons_linemode.py
+	echo "default_linemode devicons" >> $(RANGER_DIR)/rc.conf
 
 uninstall:
 	$(RM) $(RANGER_DIR)/devicons.py

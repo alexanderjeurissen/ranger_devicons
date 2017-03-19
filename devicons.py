@@ -90,7 +90,21 @@ file_node_extensions = {
     'psd'      : '',
     'psb'      : '',
     'ts'       : '',
-    'jl'       : ''
+    'jl'       : '',
+    'log'      : '',
+    'avi'      : '',
+    'mpeg'     : '',
+    'mpg'      : '',
+    'mkv'      : '',
+    'flv'      : '',
+    'mp4'      : '',
+    'xml'      : '',
+    'rc'       : '',
+    'zip'      : '',
+    'lha'      : '',
+    'gz'       : '',
+    'tar'      : '',
+    'tgz'      : ''
 }
 
 file_node_exact_matches = {
@@ -112,7 +126,25 @@ file_node_exact_matches = {
     'license'                          : '',
     'node_modules'                     : '',
     'react.jsx'                        : '',
-    'procfile'                         : ''
+    'procfile',                        : '',
+    '.Xdefaults'                       : '',
+    '.Xresources'                      : '',
+    '.dmrc'                            : '',
+    '.fasd'                            : '',
+    '.gitconfig'                       : '',
+    '.jack-settings'                   : '',
+    '.mime.types'                      : '',
+    '.nvidia-settings-rc'              : '',
+    '.pam_environment'                 : '',
+    '.profile'                         : '',
+    '.recently-used'                   : '',
+    '.selected_editor'                 : '',
+    '.vimrc'                           : '',
+    '.xinputrc'                        : '',
+    'mimeapps.list'                    : '',
+    'user-dirs.dirs'                   : '',
+    'ini'                              : '',
+    'config'                           : ''
 }
 
 def devicon(file):

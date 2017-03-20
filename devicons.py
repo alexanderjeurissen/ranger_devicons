@@ -126,7 +126,7 @@ file_node_exact_matches = {
     'license'                          : '',
     'node_modules'                     : '',
     'react.jsx'                        : '',
-    'procfile',                        : '',
+    'procfile'                         : '',
     '.Xdefaults'                       : '',
     '.Xresources'                      : '',
     '.dmrc'                            : '',

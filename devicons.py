@@ -92,6 +92,7 @@ file_node_extensions = {
     'ts'       : '',
     'jl'       : '',
     'rc'       : '',
+    'xml'      : '',
     'log'      : '',
     'avi'      : '',
     'mpeg'     : '',

@@ -86,6 +86,7 @@ file_node_extensions = {
     'erl'      : '',
     'hrl'      : '',
     'vim'      : '',
+    'vimrc'    : '',
     'ai'       : '',
     'psd'      : '',
     'psb'      : '',
@@ -126,6 +127,19 @@ file_node_extensions = {
     'zip'      : ''
 }
 
+dir_node_exact_matches = {
+    '.git'                             : '',
+    'Desktop'                          : '',
+    'Documents'                        : '',
+    'Downloads'                        : '',
+    'Dropbox'                          : '',
+    'Music'                            : '',
+    'Pictures'                         : '',
+    'Public'                           : '',
+    'Templates'                        : '',
+    'Videos'                           : '',
+}
+
 file_node_exact_matches = {
     'exact-match-case-sensitive-1.txt' : 'X1',
     'exact-match-case-sensitive-2'     : 'X2',
@@ -158,7 +172,7 @@ file_node_exact_matches = {
     '.profile'                         : '',
     '.recently-used'                   : '',
     '.selected_editor'                 : '',
-    '.vimrc'                           : '',
+    '.vimrc'                           : '',
     '.xinputrc'                        : '',
     'mimeapps.list'                    : '',
     'user-dirs.dirs'                   : '',
@@ -167,5 +181,5 @@ file_node_exact_matches = {
 }
 
 def devicon(file):
-  if file.is_directory: return ''
+  if file.is_directory: return dir_node_exact_matches.get(file.relative_path, '')
   return file_node_exact_matches.get(file.relative_path, file_node_extensions.get(file.extension, ''))

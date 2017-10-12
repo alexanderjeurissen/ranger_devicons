@@ -128,6 +128,7 @@ file_node_extensions = {
 }
 
 dir_node_exact_matches = {
+# English
     '.git'                             : '',
     'Desktop'                          : '',
     'Documents'                        : '',
@@ -138,6 +139,14 @@ dir_node_exact_matches = {
     'Public'                           : '',
     'Templates'                        : '',
     'Videos'                           : '',
+# French
+    'Bureau'                           : '',
+    'Documents'                        : '',
+    'Téléchargements'                  : '',
+    'Musique'                          : '',
+    'Images'                           : '',
+    'Publique'                         : '',
+    'Vidéos'                           : '',
 }
 
 file_node_exact_matches = {

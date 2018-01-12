@@ -147,6 +147,16 @@ dir_node_exact_matches = {
     'Images'                           : '',
     'Publique'                         : '',
     'Vidéos'                           : '',
+# Portuguese
+    'Área de trabalho'                 : '',
+    'Documentos'                       : '',
+    'Downloads'                        : '',
+    'Dropbox'                          : '',
+    'Música'                           : '',
+    'Imagens'                          : '',
+    'Público'                          : '',
+    'Modelos'                          : '',
+    'Vídeos'                           : '',
 }
 
 file_node_exact_matches = {

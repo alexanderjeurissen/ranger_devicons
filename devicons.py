@@ -150,8 +150,6 @@ dir_node_exact_matches = {
 # Portuguese
     'Área de trabalho'                 : '',
     'Documentos'                       : '',
-    'Downloads'                        : '',
-    'Dropbox'                          : '',
     'Música'                           : '',
     'Imagens'                          : '',
     'Público'                          : '',

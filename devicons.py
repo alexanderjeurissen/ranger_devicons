@@ -155,6 +155,15 @@ dir_node_exact_matches = {
     'Público'                          : '',
     'Modelos'                          : '',
     'Vídeos'                           : '',
+# Italian
+    'Scrivania'                        : '',
+    'Documenti'                        : '',
+    'Scaricati'                        : '',
+    'Musica'                           : '',
+    'Immagini'                         : '',
+    'Pubblici'                         : '',
+    'Modelli'                          : '',
+    'Video'                            : '',
 }
 
 file_node_exact_matches = {

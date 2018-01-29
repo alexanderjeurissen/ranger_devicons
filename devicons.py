@@ -96,6 +96,7 @@ file_node_extensions = {
     'xml'      : '',
     'log'      : '',
     'avi'      : '',
+    'mov'      : '',
     'mpeg'     : '',
     'mpg'      : '',
     'mkv'      : '',

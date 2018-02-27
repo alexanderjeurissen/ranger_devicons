@@ -164,6 +164,13 @@ dir_node_exact_matches = {
     'Pubblici'                         : '',
     'Modelli'                          : '',
     'Video'                            : '',
+# German
+    'Schreibtisch'                     : '',
+    'Dokumente'                        : '',
+    'Musik'                            : '',
+    'Bilder'                           : '',
+    'Öffentlich'                       : '',
+    'Vorlagen'                         : '',
 }
 
 file_node_exact_matches = {

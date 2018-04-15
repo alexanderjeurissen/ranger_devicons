@@ -8,7 +8,7 @@ install:
 	install -b devicons_linemode.py $(PLUGIN_DIR)/devicons_linemode.py
 	grep -q 'default_linemode devicons' $(RC_FILE) || echo '# a plugin that adds file glyphs / icon support to Ranger:' >> $(RC_FILE)
 	grep -q 'default_linemode devicons' $(RC_FILE) || echo '# https://github.com/alexanderjeurissen/ranger_devicons' >> $(RC_FILE)
-	grep -q 'default_linemode devicons' $(RC_FILE) || echo 'default_linemode devicons\n' >> $(RC_FILE)
+	grep -q 'default_linemode devicons' $(RC_FILE) || echo 'default_linemode devicons' >> $(RC_FILE)
 
 uninstall:
 	$(RM) $(RANGER_DIR)/devicons.py

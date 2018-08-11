@@ -125,7 +125,7 @@ file_node_extensions = {
     'xul'      : '',
     'xz'       : '',
     'yml'      : '',
-    'zip'      : ''
+    'zip'      : '',
 }
 
 dir_node_exact_matches = {
@@ -193,7 +193,7 @@ file_node_exact_matches = {
     '.selected_editor'                 : '',
     '.vimrc'                           : '',
     '.xinputrc'                        : '',
-    'config'                           : ''
+    'config'                           : '',
     'dropbox'                          : '',
     'exact-match-case-sensitive-1.txt' : 'X1',
     'exact-match-case-sensitive-2'     : 'X2',

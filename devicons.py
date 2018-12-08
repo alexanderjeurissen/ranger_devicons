@@ -140,6 +140,15 @@ dir_node_exact_matches = {
     'Public'                           : '',
     'Templates'                        : '',
     'Videos'                           : '',
+# Spanish
+    'Escritorio'                       : '',
+    'Documentos'                       : '',
+    'Descargas'                        : '',
+    'Música'                           : '',
+    'Imágenes'                         : '',
+    'Público'                          : '',
+    'Plantillas'                       : '',
+    'Vídeos'                           : '',
 # French
     'Bureau'                           : '',
     'Documents'                        : '',

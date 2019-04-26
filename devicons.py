@@ -185,6 +185,14 @@ dir_node_exact_matches = {
     'Schreibtisch'                     : '',
     'Vorlagen'                         : '',
     'Öffentlich'                       : '',
+# Hungarian
+    'Dokumentumok'                     : '',
+    'Képek'                            : '',
+    'Modelli'                          : '',
+    'Zene'                             : '',
+    'Letöltések'                       : '',
+    'Számítógép'                        : '',
+    'Videók'                           : '',
 }
 
 file_node_exact_matches = {

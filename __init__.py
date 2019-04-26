@@ -1,6 +1,6 @@
 import ranger.api
 from ranger.core.linemode import LinemodeBase
-from plugins.devicons import *
+from .devicons import *
 
 @ranger.api.register_linemode
 class DevIconsLinemode(LinemodeBase):

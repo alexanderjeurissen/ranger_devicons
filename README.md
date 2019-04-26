@@ -13,5 +13,14 @@ screenshot), this and other NERDfonts and the install instructions for these fon
 the following repository: https://github.com/ryanoasis/nerd-fonts
 
 ## Install instructions
+### Stable method:
 A makefile is included to install and uninstall this plugin. to install simply run:
 `make install` and to uninstall the plugin run `make uninstall`.
+
+### Experimental method:
+Ranger has added support for loading directories in the plugins folder to `master` which makes it easier to install and keep plugins updated.  
+To install, just clone the repo into the plugins folder:
+```bash
+git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
+```
+Then add `default_linemode devicons` to your `rc.conf`.

@@ -11,5 +11,8 @@ install:
 	grep -q 'default_linemode devicons' $(RC_FILE) || echo 'default_linemode devicons' >> $(RC_FILE)
 
 uninstall:
+	sed -i.old -E '/^# a plugin that adds file glyphs/d' $(RC_FILE)
+	sed -i.old -E '/^# https:\/\/github.com\/alexanderjeurissen\/ranger_devicons/d' $(RC_FILE)
+	sed -i.old -E '/^default_linemode devicons/d' $(RC_FILE)
 	$(RM) $(PLUGIN_DIR)/devicons.py
 	$(RM) $(PLUGIN_DIR)/devicons_linemode.py

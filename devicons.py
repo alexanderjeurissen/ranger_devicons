@@ -37,6 +37,7 @@ file_node_extensions = {
     'cp'       : '',
     'cpio'     : '',
     'cpp'      : '',
+    'cs'       : '',
     'css'      : '',
     'cue'      : '',
     'cvs'      : '',

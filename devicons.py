@@ -266,6 +266,8 @@ file_node_exact_matches = {
     '.xinitrc'                         : '',
     '.xinputrc'                        : '',
     'config'                           : '',
+    'Dockerfile'                       : '',
+    'docker-compose.yml'               : '',
     'dropbox'                          : '',
     'exact-match-case-sensitive-1.txt' : 'X1',
     'exact-match-case-sensitive-2'     : 'X2',

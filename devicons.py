@@ -78,6 +78,7 @@ file_node_extensions = {
     'gzip'     : '',
     'h'        : '',
     'hbs'      : '',
+    'hpp'      : '',
     'hrl'      : '',
     'hs'       : '',
     'htaccess' : '',

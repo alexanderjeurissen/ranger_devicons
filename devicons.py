@@ -166,7 +166,7 @@ file_node_extensions = {
     'sass'     : '',
     'scala'    : '',
     'scss'     : '',
-    'sh'       : '',
+    'sh'       : '',
     'slim'     : '',
     'sln'      : '',
     'so'       : '',

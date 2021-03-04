@@ -7,6 +7,8 @@ assignees: ''
 
 ---
 
+[ ] I've read the [guidelines for Contributing](https://github.com/alexanderjeurissen/ranger_devicons/blob/main/CONTRIBUTING.MD)
+
 **Is your feature request related to a problem? Please describe.**
 A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
 

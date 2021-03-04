@@ -7,7 +7,7 @@ assignees: ''
 
 ---
 
-[ ] I've read the [guidelines for Contributing](https://github.com/alexanderjeurissen/ranger_devicons/blob/main/CONTRIBUTING.MD)
+- [ ] I've read the [guidelines for Contributing](https://github.com/alexanderjeurissen/ranger_devicons/blob/main/CONTRIBUTING.MD)
 
 **Describe the bug**
 A clear and concise description of what the bug is.

@@ -8,5 +8,5 @@ jobs:
       uses: roots/issue-closer@v1.1
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
-        issue-close-message: "@${issue.user.login} this issue was automatically closed because it did not follow the issue template"
+        issue-close-message: "@${issue.user.login} this issue was automatically closed because it did not follow the issue template. Please refer to the [guidelines for Contributing](https://github.com/alexanderjeurissen/ranger_devicons/blob/main/CONTRIBUTING.MD)"
         issue-pattern: ".*guidelines for Contributing.*"

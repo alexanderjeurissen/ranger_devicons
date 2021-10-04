@@ -3,21 +3,26 @@
 # These glyphs, and the mapping of file extensions to glyphs
 # has been copied from the vimscript code that is present in
 # https://github.com/ryanoasis/vim-devicons
-import re;
-import os;
 
-# Get the XDG_USER_DIRS directory names from enviromental variables
+import re
+import os
 
-xdgs_dirs = {path.split('/')[-2]: icon for key, icon in [
-    ('XDG_DOCUMENTS_DIR'  , ''),
-    ('XDG_DOWNLOAD_DIR'   , ''),
-    ('XDG_CONFIG_DIR'     , ''),
-    ('XDG_MUSIC_DIR'      , ''),
-    ('XDG_PICTURES_DIR'   , ''),
-    ('XDG_PUBLICSHARE_DIR', ''),
-    ('XDG_TEMPLATES_DIR'  , ''),
-    ('XDG_VIDEOS_DIR'     , ''),
-] if (path := os.getenv(key))}
+
+# Get the XDG_USER_DIRS directory names from environment variables
+xdgs_dirs = {
+    os.path.basename(os.getenv(key).rstrip('/')): icon
+    for key, icon in (
+        ('XDG_DOCUMENTS_DIR', ''),
+        ('XDG_DOWNLOAD_DIR', ''),
+        ('XDG_CONFIG_DIR', ''),
+        ('XDG_MUSIC_DIR', ''),
+        ('XDG_PICTURES_DIR', ''),
+        ('XDG_PUBLICSHARE_DIR', ''),
+        ('XDG_TEMPLATES_DIR', ''),
+        ('XDG_VIDEOS_DIR', ''),
+    )
+    if os.getenv(key)
+}
 
 
 # all those glyphs will show as weird squares if you don't have the correct patched font
@@ -217,6 +222,7 @@ file_node_extensions = {
     'zsh'      : '',
 }
 
+
 dir_node_exact_matches = {
 # English
     '.git'                             : '',
@@ -282,6 +288,7 @@ dir_node_exact_matches = {
 # XDG_USER_DIRS
     **xdgs_dirs
 }
+
 
 file_node_exact_matches = {
     '.bash_aliases'                    : '',
@@ -374,6 +381,9 @@ file_node_exact_matches = {
     'webpack.config.js'                : '',
 }
 
+
 def devicon(file):
-  if file.is_directory: return dir_node_exact_matches.get(file.relative_path, '')
-  return file_node_exact_matches.get(os.path.basename(file.relative_path), file_node_extensions.get(file.extension, ''))
+    if file.is_directory:
+        return dir_node_exact_matches.get(file.relative_path, '')
+    return file_node_exact_matches.get(os.path.basename(file.relative_path),
+                                       file_node_extensions.get(file.extension, ''))

@@ -12,7 +12,7 @@ def patch_devicons(base, classname=None, attributes=None):
     """Patch a linemode class with file icons."""
 
     classname = classname or base.__name__
-    attributes = attributes or {}
+    attributes = (attributes or {}).copy()
 
     def filetitle(self, file, metadata):
         """Prefix a file icon to the file title."""
@@ -24,7 +24,10 @@ def patch_devicons(base, classname=None, attributes=None):
             super(self.__class__, self).filetitle(file, metadata)
         ))
 
-    return type(classname, (base,), {'filetitle': filetitle, **attributes})
+    # Python 2.x-3.4 don't support unpacking syntex `{**dict}`
+    attributes['filetitle'] = filetitle
+
+    return type(classname, (base,), attributes)
 
 
 # Identical to patched DefaultLinemode(name='filename')

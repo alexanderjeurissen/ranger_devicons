@@ -1,35 +1,49 @@
 import os
-import ranger.api
+from ranger.api import register_linemode
 from ranger.core import linemode
 from .devicons import *
 
+
 SEPARATOR = os.getenv('RANGER_DEVICONS_SEPARATOR', ' ')
+PATCH_BUILTIN = (os.getenv('RANGER_DEVICONS_PATCH_BUILTIN', 'True').lower() in ('true', 'yes', '1'))
 
 
-@ranger.api.register_linemode
-class DevIconsLinemode(linemode.LinemodeBase):
-    name = "devicons"
-    uses_metadata = False
+def patch_devicons(base, classname=None, attributes=None):
+    """Patch a linemode class with file icons."""
+
+    classname = classname or base.__name__
+    attributes = attributes or {}
 
     def filetitle(self, file, metadata):
-        return SEPARATOR.join((devicon(file), file.relative_path))
+        """Prefix a file icon to the file title."""
+
+        icon = devicon(file)
+        return ''.join((
+            icon,
+            SEPARATOR,
+            super(self.__class__, self).filetitle(file, metadata)
+        ))
+
+    return type(classname, (base,), {'filetitle': filetitle, **attributes})
 
 
-def patch_devicons(cls):
-    def filetitle(self, file, metadata):
-        return SEPARATOR.join((devicon(file),
-                               super(self.__class__, self).filetitle(file, metadata)))
-
-    return type(cls.__name__, (cls,), {'filetitle': filetitle})
+# Identical to patched DefaultLinemode(name='filename')
+DevIconsLinemode = register_linemode(patch_devicons(base=linemode.DefaultLinemode,
+                                                    classname='DevIconsLinemode',
+                                                    attributes={'name': 'devicons'}))
 
 
-name, attr = None, None
-for name, attr in vars(linemode).items():
-    if name.endswith('Linemode'):
-        try:
-            if issubclass(attr, linemode.LinemodeBase):
-                globals()[name] = ranger.api.register_linemode(patch_devicons(attr))
-        except TypeError:
-            pass
+if PATCH_BUILTIN:
+    name, member = None, None
+    for name, member in vars(linemode).items():
+        if name.endswith('Linemode'):
+            try:
+                if not issubclass(member, linemode.LinemodeBase):
+                    continue
+            except TypeError:
+                continue
+            else:
+                # Patch ranger's builtin linemodes
+                globals()[name] = register_linemode(patch_devicons(base=member))
 
-del name, attr
+    del name, member

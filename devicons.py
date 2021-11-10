@@ -285,9 +285,11 @@ dir_node_exact_matches = {
     'Letöltések'                       : '',
     'Számítógép'                       : '',
     'Videók'                           : '',
-# XDG_USER_DIRS
-    **xdgs_dirs
 }
+
+# Python 2.x-3.4 don't support unpacking syntex `{**dict}`
+# XDG_USER_DIRS
+dir_node_exact_matches.update(xdgs_dirs)
 
 
 file_node_exact_matches = {

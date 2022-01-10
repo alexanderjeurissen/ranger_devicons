@@ -31,14 +31,20 @@ This plugin can be configured by setting environment variables (e.g. in your
   separator between icon and filename. Some terminals use the adjacent space to
   display a bigger icon, in which case this can be set to two spaces instead.
 
-- `RANGER_DEVICONS_PATCH_BUILTIN` (default `True`): Whether to patch Ranger's
-  builtin linemodes, i.e., prefixes all builtin linemodes with file icons. You
-  can set `RANGER_DEVICONS_PATCH_BUILTIN="False"` to disable this and execute the
+- `RANGER_DEVICONS_OVERRIDE_BUILTIN` (default `True`): Whether to override Ranger's
+  builtin linemodes with patches, i.e., prefixes all builtin linemodes with file icons.
+  You can set `RANGER_DEVICONS_OVERRIDE_BUILTIN="False"` to disable this and execute the
   following command:
 
   ```bash
-  echo "default_linemode devicons" >> "$HOME/.config/ranger/rc.conf"
+  echo "default_linemode devicons" >> "${HOME}/.config/ranger/rc.conf"
   ```
 
   to use the devicons linemode (which is identical to the patched version of Ranger's
   default linemode).
+
+  Or (Ranger's builtin linemodes with prefix `devicons-`):
+
+  ```bash
+  echo "default_linemode devicons-filename" >> "${HOME}/.config/ranger/rc.conf"
+  ```

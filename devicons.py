@@ -238,6 +238,9 @@ dir_node_exact_matches = {
     'Public'                           : '',
     'Templates'                        : '',
     'Videos'                           : '',
+    'anaconda3'                        : '',
+    'go'                               : '',
+    'workspace'                        : '',
 # Spanish
     'Escritorio'                       : '',
     'Documentos'                       : '',
@@ -287,6 +290,24 @@ dir_node_exact_matches = {
     'Letöltések'                       : '',
     'Számítógép'                       : '',
     'Videók'                           : '',
+# Chinese(Simple)
+    '桌面'                             : '',
+    '文档'                             : '',
+    '下载'                             : '',
+    '音乐'                             : '',
+    '图片'                             : '',
+    '公共的'                           : '',
+    '模板'                             : '',
+    '视频'                             : '',
+# Chinese(Traditional)
+    '桌面'                             : '',
+    '文檔'                             : '',
+    '下載'                             : '',
+    '音樂'                             : '',
+    '圖片'                             : '',
+    '公共的'                           : '',
+    '模板'                             : '',
+    '視頻'                             : '',
 }
 
 # Python 2.x-3.4 don't support unpacking syntex `{**dict}`

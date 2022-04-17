@@ -240,8 +240,8 @@ dir_node_exact_matches = {
     'Videos'                           : '',
     'anaconda3'                        : '',
     'go'                               : '',
-    'bin'                              : '',
     'workspace'                        : '',
+    'OneDrive'                         : '',
 # Spanish
     'Escritorio'                       : '',
     'Documentos'                       : '',

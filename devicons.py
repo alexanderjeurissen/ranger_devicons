@@ -215,6 +215,8 @@ file_node_extensions = {
     'xhtml'    : '',
     'xls'      : '',
     'xlsx'     : '',
+    'xlsm'     : '',
+    'xlsb'     : '',
     'xml'      : '',
     'xul'      : '',
     'xz'       : '',

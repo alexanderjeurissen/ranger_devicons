@@ -334,6 +334,15 @@ dir_node_exact_matches = {
     '公共'                           : '',
     '模板'                             : '',
     '視頻'                             : '',
+# Turkish
+    'Masaüstü'                         : '',
+    'Belgeler'                         : '',
+    'İndirilenler'                     : '',
+    'Müzik'                            : '',
+    'Resimler'                         : '',
+    'Genel'                            : '',
+    'Şablonlar'                        : '',
+    'Videolar'                         : '',
 }
 
 # Python 2.x-3.4 don't support unpacking syntex `{**dict}`

@@ -9,19 +9,31 @@ import os
 
 
 # Get the XDG_USER_DIRS directory names from environment variables
+user_dirs_file = str(
+    os.getenv('XDG_CONFIG_HOME') or 
+    os.getenv('HOME') + '/.config'
+).rstrip('/') + '/user-dirs.dirs'
+
+if os.path.exists(user_dirs_file):
+    with open(user_dirs_file, 'r') as file:
+        content = file.read()
+else:
+    content = ''
+
 xdgs_dirs = {
-    os.path.basename(os.getenv(key).rstrip('/')): icon
+    re.search(f'XDG_{key}_DIR='+r'"?\$HOME/([^"]+)/?"?', content).group(1) or 
+    os.path.basename(str(os.getenv(f'XDG_{key}_DIR')).rstrip('/')): icon
     for key, icon in (
-        ('XDG_DOCUMENTS_DIR', ''),
-        ('XDG_DOWNLOAD_DIR', ''),
-        ('XDG_CONFIG_DIR', ''),
-        ('XDG_MUSIC_DIR', ''),
-        ('XDG_PICTURES_DIR', ''),
-        ('XDG_PUBLICSHARE_DIR', ''),
-        ('XDG_TEMPLATES_DIR', ''),
-        ('XDG_VIDEOS_DIR', ''),
+        ('DOCUMENTS',   ''),
+        ('DOWNLOAD',    ''),
+        ('CONFIG',      ''),
+        ('MUSIC',       ''),
+        ('PICTURES',    ''),
+        ('PUBLICSHARE', ''),
+        ('TEMPLATES',   ''),
+        ('VIDEOS',      ''),
     )
-    if os.getenv(key)
+    if re.search('XDG_'+key+r'_DIR="?\$HOME/([^"]+)/?"?', content) or os.getenv(key)
 }
 
 

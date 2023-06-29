@@ -14,15 +14,17 @@ user_dirs_file = str(
     os.getenv('HOME') + '/.config'
 ).rstrip('/') + '/user-dirs.dirs'
 
+content = ''
 if os.path.exists(user_dirs_file):
     with open(user_dirs_file, 'r') as file:
         content = file.read()
-else:
-    content = ''
 
 xdgs_dirs = {
-    re.search(f'XDG_{key}_DIR='+r'"?\$HOME/([^"]+)/?"?', content).group(1) or 
-    os.path.basename(str(os.getenv(f'XDG_{key}_DIR')).rstrip('/')): icon
+    str(
+        re.search(f'XDG_{key}_DIR='+r'"?\$HOME/([^"]+)/?"?', content).group(1)
+        if re.search(f'XDG_{key}_DIR='+r'"?\$HOME/([^"]+)/?"?', content)
+        else os.path.basename(str(os.getenv(f'XDG_{key}_DIR')).rstrip('/'))
+    ): icon
     for key, icon in (
         ('DOCUMENTS',   ''),
         ('DOWNLOAD',    ''),
@@ -33,7 +35,7 @@ xdgs_dirs = {
         ('TEMPLATES',   ''),
         ('VIDEOS',      ''),
     )
-    if re.search('XDG_'+key+r'_DIR="?\$HOME/([^"]+)/?"?', content) or os.getenv(key)
+    if os.getenv(f'XDG_{key}_DIR') or re.search(f'XDG_{key}_DIR='+r'"?\$HOME/([^"]+)/?"?', content)
 }
 
 
@@ -450,3 +452,4 @@ def devicon(file):
         return dir_node_exact_matches.get(file.relative_path, '')
     return file_node_exact_matches.get(os.path.basename(file.relative_path),
                                        file_node_extensions.get(file.extension, ''))
+print(xdgs_dirs)

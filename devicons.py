@@ -207,6 +207,7 @@ file_node_extensions = {
     'sql'      : '',
     'styl'     : '',
     'suo'      : '',
+    'svelte'   : '',
     'swift'    : '',
     't'        : '',
     'tar'      : '',

@@ -137,6 +137,7 @@ file_node_extensions = {
     'lhs'      : '',
     'log'      : '',
     'lua'      : '',
+    'lz'       : '',
     'lzh'      : '',
     'lzma'     : '',
     'm4a'      : '',

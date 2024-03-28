@@ -128,6 +128,7 @@ file_node_extensions = {
     'jpg'      : '',
     'js'       : '',
     'json'     : '',
+    'jsonc'    : '',
     'jsx'      : '',
     'key'      : '',
     'ksh'      : '',

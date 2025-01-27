@@ -1,0 +1,8 @@
+de:
+  directory_mappings:
+    'Bilder': 'Pictures'
+    'Dokumente': 'Documents'
+    'Musik': 'Music'
+    'Schreibtisch': 'Desktop'
+    'Vorlagen': 'Templates'
+    'Öffentlich': 'Public'

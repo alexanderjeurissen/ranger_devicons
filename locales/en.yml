@@ -1,0 +1,17 @@
+en:
+  directory_mappings:
+    '.git': ''
+    'Desktop': ''
+    'Documents': ''
+    'Downloads': ''
+    'Dotfiles': ''
+    'Dropbox': ''
+    'Music': ''
+    'Pictures': ''
+    'Public': ''
+    'Templates': ''
+    'Videos': ''
+    'anaconda3': ''
+    'go': ''
+    'workspace': ''
+    'OneDrive': ''

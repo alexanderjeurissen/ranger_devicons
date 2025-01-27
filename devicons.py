@@ -6,7 +6,19 @@
 
 import re
 import os
+import yaml
 
+# Load locale files
+def load_locale(locale):
+    with open(f'locales/{locale}.yml', 'r', encoding='utf-8') as file:
+        return yaml.safe_load(file)
+
+# Get the current locale
+current_locale = os.getenv('LANG', 'en').split('.')[0]
+
+# Load the current locale and English locale
+current_locale_data = load_locale(current_locale)
+english_locale_data = load_locale('en')
 
 # Get the XDG_USER_DIRS directory names from environment variables
 xdgs_dirs = {
@@ -254,103 +266,6 @@ file_node_extensions = {
 }
 
 
-dir_node_exact_matches = {
-# English
-    '.git'                             : '',
-    'Desktop'                          : '',
-    'Documents'                        : '',
-    'Downloads'                        : '',
-    'Dotfiles'                         : '',
-    'Dropbox'                          : '',
-    'Music'                            : '',
-    'Pictures'                         : '',
-    'Public'                           : '',
-    'Templates'                        : '',
-    'Videos'                           : '',
-    'anaconda3'                        : '',
-    'go'                               : '',
-    'workspace'                        : '',
-    'OneDrive'                         : '',
-# Spanish
-    'Escritorio'                       : '',
-    'Documentos'                       : '',
-    'Descargas'                        : '',
-    'Música'                           : '',
-    'Imágenes'                         : '',
-    'Público'                          : '',
-    'Plantillas'                       : '',
-    'Vídeos'                           : '',
-# French
-    'Bureau'                           : '',
-    'Documents'                        : '',
-    'Images'                           : '',
-    'Musique'                          : '',
-    'Publique'                         : '',
-    'Téléchargements'                  : '',
-    'Vidéos'                           : '',
-# Portuguese
-    'Documentos'                       : '',
-    'Imagens'                          : '',
-    'Modelos'                          : '',
-    'Música'                           : '',
-    'Público'                          : '',
-    'Vídeos'                           : '',
-    'Área de trabalho'                 : '',
-# Italian
-    'Documenti'                        : '',
-    'Immagini'                         : '',
-    'Modelli'                          : '',
-    'Musica'                           : '',
-    'Pubblici'                         : '',
-    'Scaricati'                        : '',
-    'Scrivania'                        : '',
-    'Video'                            : '',
-# German
-    'Bilder'                           : '',
-    'Dokumente'                        : '',
-    'Musik'                            : '',
-    'Schreibtisch'                     : '',
-    'Vorlagen'                         : '',
-    'Öffentlich'                       : '',
-# Hungarian
-    'Dokumentumok'                     : '',
-    'Képek'                            : '',
-    'Modelli'                          : '',
-    'Zene'                             : '',
-    'Letöltések'                       : '',
-    'Számítógép'                       : '',
-    'Videók'                           : '',
-# Chinese(Simple)
-    '桌面'                             : '',
-    '文档'                             : '',
-    '下载'                             : '',
-    '音乐'                             : '',
-    '图片'                             : '',
-    '公共的'                           : '',
-    '公共'                           : '',
-    '模板'                             : '',
-    '视频'                             : '',
-# Chinese(Traditional)
-    '桌面'                             : '',
-    '文檔'                             : '',
-    '下載'                             : '',
-    '音樂'                             : '',
-    '圖片'                             : '',
-    '公共的'                           : '',
-    '公共'                           : '',
-    '模板'                             : '',
-    '視頻'                             : '',
-# Swedish
-    'Skrivbord'                          : '',
-    'Dokument'                        : '',
-    'Hämtningar'                        : '',
-    'Musik'                            : '',
-    'Bilder'                         : '',
-    'Public'                           : '',
-    'Mallar'                        : '',
-    'Video'                           : '',
-}
-
 # Python 2.x-3.4 don't support unpacking syntex `{**dict}`
 # XDG_USER_DIRS
 dir_node_exact_matches.update(xdgs_dirs)
@@ -450,6 +365,10 @@ file_node_exact_matches = {
 
 def devicon(file):
     if file.is_directory:
-        return dir_node_exact_matches.get(file.relative_path, '')
+        if current_locale != 'en':
+            english_name = current_locale_data['directory_mappings'].get(file.relative_path)
+            if english_name:
+                return english_locale_data['directory_mappings'].get(english_name, '')
+        return english_locale_data['directory_mappings'].get(file.relative_path, '')
     return file_node_exact_matches.get(os.path.basename(file.relative_path),
                                        file_node_extensions.get(file.extension, ''))

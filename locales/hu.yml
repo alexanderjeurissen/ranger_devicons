@@ -1,0 +1,9 @@
+hu:
+  directory_mappings:
+    'Dokumentumok': 'Documents'
+    'Képek': 'Pictures'
+    'Modelli': 'Templates'
+    'Zene': 'Music'
+    'Letöltések': 'Downloads'
+    'Számítógép': 'Desktop'
+    'Videók': 'Videos'

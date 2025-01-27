@@ -1,0 +1,10 @@
+sv:
+  directory_mappings:
+    'Skrivbord': 'Desktop'
+    'Dokument': 'Documents'
+    'Hämtningar': 'Downloads'
+    'Musik': 'Music'
+    'Bilder': 'Pictures'
+    'Public': 'Public'
+    'Mallar': 'Templates'
+    'Video': 'Videos'

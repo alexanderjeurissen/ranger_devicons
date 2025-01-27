@@ -1,0 +1,9 @@
+pt:
+  directory_mappings:
+    'Documentos': 'Documents'
+    'Imagens': 'Pictures'
+    'Modelos': 'Templates'
+    'Música': 'Music'
+    'Público': 'Public'
+    'Vídeos': 'Videos'
+    'Área de trabalho': 'Desktop'

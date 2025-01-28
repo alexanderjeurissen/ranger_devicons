@@ -1,0 +1,11 @@
+zh_TW:
+  directory_mappings:
+    '桌面': 'Desktop'
+    '文檔': 'Documents'
+    '下載': 'Downloads'
+    '音樂': 'Music'
+    '圖片': 'Pictures'
+    '公共的': 'Public'
+    '公共': 'Public'
+    '模板': 'Templates'
+    '視頻': 'Videos'

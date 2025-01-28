@@ -1,0 +1,10 @@
+it:
+  directory_mappings:
+    'Documenti': 'Documents'
+    'Immagini': 'Pictures'
+    'Modelli': 'Templates'
+    'Musica': 'Music'
+    'Pubblici': 'Public'
+    'Scaricati': 'Downloads'
+    'Scrivania': 'Desktop'
+    'Video': 'Videos'

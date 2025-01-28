@@ -120,3 +120,29 @@ merged:
 
 10. [Open a Pull Request](https://help.github.com/articles/using-pull-requests/)
     with a clear title and description.
+
+## Locale Support
+
+This project supports I18n for directory name to icon mappings. Locale files are created for each language listed in `devicons.py`. The `devicon` function retrieves the locale file for the current locale and the English locale. It then looks up `file.relative_path` inside the current locale to determine the English directory mapping name (only if the current locale is not English). Finally, it looks up the English directory mapping name in the English locale to retrieve the icon.
+
+### Adding New Locale Files
+
+To add a new locale file, follow these steps:
+
+1. Create a new file in the `locales` directory with the appropriate locale code (e.g., `locales/ja.yml` for Japanese).
+2. Add directory mappings for the new locale. The mappings should map the directory names in the new locale to the English directory names.
+
+Example:
+
+```yaml
+ja:
+  directory_mappings:
+    'デスクトップ': 'Desktop'
+    'ドキュメント': 'Documents'
+    'ダウンロード': 'Downloads'
+    '音楽': 'Music'
+    '画像': 'Pictures'
+    '公開': 'Public'
+    'テンプレート': 'Templates'
+    'ビデオ': 'Videos'
+```

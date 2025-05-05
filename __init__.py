@@ -1,12 +1,12 @@
 import os
 import ranger.api
-from ranger.core.linemode import LinemodeBase
+from ranger.core.linemode import SizeMtimeLinemode
 from .devicons import *
 
 SEPARATOR = os.getenv('RANGER_DEVICONS_SEPARATOR', ' ')
 
 @ranger.api.register_linemode
-class DevIconsLinemode(LinemodeBase):
+class DevIconsLinemode(SizeMtimeLinemode):
   name = "devicons"
 
   uses_metadata = False

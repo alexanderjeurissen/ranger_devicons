@@ -4,7 +4,6 @@
 # has been copied from the vimscript code that is present in
 # https://github.com/ryanoasis/vim-devicons
 
-import re
 import os
 
 

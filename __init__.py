@@ -1,3 +1,5 @@
+"""Ranger plugin providing a linemode with devicons."""
+
 import os
 import ranger.api
 from ranger.core.linemode import LinemodeBase
@@ -7,9 +9,11 @@ SEPARATOR = os.getenv('RANGER_DEVICONS_SEPARATOR', ' ')
 
 @ranger.api.register_linemode
 class DevIconsLinemode(LinemodeBase):
-  name = "devicons"
+    """Linemode that prefixes file names with their devicon."""
 
-  uses_metadata = False
+    name = "devicons"
+    uses_metadata = False
 
-  def filetitle(self, file, metadata):
-    return devicon(file) + SEPARATOR + file.relative_path
+    def filetitle(self, file, metadata):
+        """Return the file's title with the appropriate devicon."""
+        return devicon(file) + SEPARATOR + file.relative_path

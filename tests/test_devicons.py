@@ -1,11 +1,16 @@
 import os
 import sys
+import importlib
 
 import pytest
 
-os.environ['DEVICONS_LANG'] = 'es'
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
-from ranger_devicons import devicons
+
+def reload_devicons(lang):
+    os.environ['DEVICONS_LANG'] = lang
+    from ranger_devicons import devicons
+    importlib.reload(devicons)
+    return devicons
 
 class MockFile:
     def __init__(self, path, is_directory=False):
@@ -15,26 +20,41 @@ class MockFile:
 
 
 def test_devicon_py_file():
+    devicons = reload_devicons('es')
     file = MockFile('example.py')
     assert devicons.devicon(file) == ''
 
 
 def test_devicon_readme():
+    devicons = reload_devicons('es')
     file = MockFile('README.md')
     assert devicons.devicon(file) == ''
 
 
 def test_devicon_directory_match():
+    devicons = reload_devicons('es')
     file = MockFile('Documents', is_directory=True)
     assert devicons.devicon(file) == ''
 
 
-def test_devicon_directory_translation():
-    english = MockFile('Downloads', is_directory=True)
-    translated = MockFile('Descargas', is_directory=True)
-    assert devicons.devicon(translated) == devicons.devicon(english)
+@pytest.mark.parametrize("lang,translated,english", [
+    ("es", "Descargas", "Downloads"),
+    ("fr", "Téléchargements", "Downloads"),
+    ("de", "Schreibtisch", "Desktop"),
+    ("it", "Scaricati", "Downloads"),
+    ("pt_BR", "Imagens", "Pictures"),
+    ("ja", "ダウンロード", "Downloads"),
+    ("ru", "Загрузки", "Downloads"),
+    ("zh_cn", "下载", "Downloads"),
+])
+def test_devicon_directory_translation(lang, translated, english):
+    devicons = reload_devicons(lang)
+    english_file = MockFile(english, is_directory=True)
+    translated_file = MockFile(translated, is_directory=True)
+    assert devicons.devicon(translated_file) == devicons.devicon(english_file)
 
 
 def test_devicon_unknown():
+    devicons = reload_devicons('es')
     file = MockFile('unknown.unknown')
     assert devicons.devicon(file) == ''

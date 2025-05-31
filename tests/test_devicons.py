@@ -58,3 +58,18 @@ def test_devicon_unknown():
     devicons = reload_devicons('es')
     file = MockFile('unknown.unknown')
     assert devicons.devicon(file) == ''
+
+
+@pytest.mark.parametrize(
+    "name,expected",
+    [
+        ("data.json", ""),
+        ("image.png", ""),
+        ("archive.tar", ""),
+        ("Makefile", ""),
+        ("package.json", ""),
+    ],
+)
+def test_devicon_various_examples(name, expected):
+    devicons = reload_devicons('es')
+    assert devicons.devicon(MockFile(name)) == expected

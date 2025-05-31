@@ -1,7 +1,7 @@
 import shutil
 from pathlib import Path
 
-PLUGIN_DIR = Path.home() / '.config' / 'ranger' / 'plugins'
+PLUGIN_DIR = Path(os.environ.get('XDG_CONFIG_HOME', Path.home() / '.config')) / 'ranger' / 'plugins'
 
 
 def main():

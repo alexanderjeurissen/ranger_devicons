@@ -12,15 +12,30 @@ I personally use the Source Code Pro patched NERDfont(this is also the font disp
 
 ## Install instructions
 
+The plugin can be installed directly from PyPI and then copied into Ranger's
+plugins directory using the provided install command:
+
+```bash
+pip install ranger_devicons
+ranger_devicons_install
+```
+This copies the plugin into `~/.config/ranger/plugins/ranger_devicons` so that
+Ranger can load it.
+
 Ranger has added support for loading directories in the plugins folder which makes it easier to install and keep plugins updated.
 
-To install, just clone the repo into the plugins folder:
+To install from a Git checkout instead, clone the repo into the plugins folder:
 
 ```bash
 git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
 ```
 
-Then execute the following `echo "default_linemode devicons" >> $HOME/.config/ranger/rc.conf` (or wherever your `rc.conf` is located).
+After installing (either from PyPI or a clone) enable the linemode with:
+
+```bash
+echo "default_linemode devicons" >> $HOME/.config/ranger/rc.conf
+```
+(or wherever your `rc.conf` is located).
 
 ## Configuration
 

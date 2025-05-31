@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ranger_devicons"
+version = "1.0.0"
+description = "File icons for the Ranger file manager"
+readme = "README.md"
+authors = [{name = "Alexander Jeurissen"}]
+license = {file = "LICENSE"}
+classifiers = [
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+]
+requires-python = ">=3.8"
+
+[tool.setuptools]
+packages = ["ranger_devicons"]
+include-package-data = true
+
+[project.scripts]
+ranger_devicons_install = "ranger_devicons.cli:main"

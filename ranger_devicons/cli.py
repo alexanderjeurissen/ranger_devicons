@@ -12,7 +12,7 @@ def main():
 
     if dest.exists():
         shutil.rmtree(dest)
-    shutil.copytree(source, dest, dirs_exist_ok=True)
+    shutil.copytree(source, dest)
     print(f"Installed ranger_devicons to {dest}")
 
 

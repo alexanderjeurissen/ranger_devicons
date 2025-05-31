@@ -3,6 +3,7 @@ import sys
 
 import pytest
 
+os.environ['DEVICONS_LANG'] = 'es'
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 from ranger_devicons import devicons
 
@@ -26,6 +27,12 @@ def test_devicon_readme():
 def test_devicon_directory_match():
     file = MockFile('Documents', is_directory=True)
     assert devicons.devicon(file) == ''
+
+
+def test_devicon_directory_translation():
+    english = MockFile('Downloads', is_directory=True)
+    translated = MockFile('Descargas', is_directory=True)
+    assert devicons.devicon(translated) == devicons.devicon(english)
 
 
 def test_devicon_unknown():

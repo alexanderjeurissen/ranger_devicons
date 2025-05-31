@@ -7,6 +7,8 @@
 # https://github.com/ryanoasis/vim-devicons
 
 import os
+import importlib
+import locale
 
 
 # Get the XDG_USER_DIRS directory names from environment variables
@@ -255,102 +257,59 @@ file_node_extensions = {
 }
 
 
-dir_node_exact_matches = {
-# English
-    '.git'                             : '',
-    'Desktop'                          : '',
-    'Documents'                        : '',
-    'Downloads'                        : '',
-    'Dotfiles'                         : '',
-    'Dropbox'                          : '',
-    'Music'                            : '',
-    'Pictures'                         : '',
-    'Public'                           : '',
-    'Templates'                        : '',
-    'Videos'                           : '',
-    'anaconda3'                        : '',
-    'go'                               : '',
-    'workspace'                        : '',
-    'OneDrive'                         : '',
-# Spanish
-    'Escritorio'                       : '',
-    'Documentos'                       : '',
-    'Descargas'                        : '',
-    'Música'                           : '',
-    'Imágenes'                         : '',
-    'Público'                          : '',
-    'Plantillas'                       : '',
-    'Vídeos'                           : '',
-# French
-    'Bureau'                           : '',
-    'Documents'                        : '',
-    'Images'                           : '',
-    'Musique'                          : '',
-    'Publique'                         : '',
-    'Téléchargements'                  : '',
-    'Vidéos'                           : '',
-# Portuguese
-    'Documentos'                       : '',
-    'Imagens'                          : '',
-    'Modelos'                          : '',
-    'Música'                           : '',
-    'Público'                          : '',
-    'Vídeos'                           : '',
-    'Área de trabalho'                 : '',
-# Italian
-    'Documenti'                        : '',
-    'Immagini'                         : '',
-    'Modelli'                          : '',
-    'Musica'                           : '',
-    'Pubblici'                         : '',
-    'Scaricati'                        : '',
-    'Scrivania'                        : '',
-    'Video'                            : '',
-# German
-    'Bilder'                           : '',
-    'Dokumente'                        : '',
-    'Musik'                            : '',
-    'Schreibtisch'                     : '',
-    'Vorlagen'                         : '',
-    'Öffentlich'                       : '',
-# Hungarian
-    'Dokumentumok'                     : '',
-    'Képek'                            : '',
-    'Modelli'                          : '',
-    'Zene'                             : '',
-    'Letöltések'                       : '',
-    'Számítógép'                       : '',
-    'Videók'                           : '',
-# Chinese(Simple)
-    '桌面'                             : '',
-    '文档'                             : '',
-    '下载'                             : '',
-    '音乐'                             : '',
-    '图片'                             : '',
-    '公共的'                           : '',
-    '公共'                           : '',
-    '模板'                             : '',
-    '视频'                             : '',
-# Chinese(Traditional)
-    '桌面'                             : '',
-    '文檔'                             : '',
-    '下載'                             : '',
-    '音樂'                             : '',
-    '圖片'                             : '',
-    '公共的'                           : '',
-    '公共'                           : '',
-    '模板'                             : '',
-    '視頻'                             : '',
-# Swedish
-    'Skrivbord'                          : '',
-    'Dokument'                        : '',
-    'Hämtningar'                        : '',
-    'Musik'                            : '',
-    'Bilder'                         : '',
-    'Public'                           : '',
-    'Mallar'                        : '',
-    'Video'                           : '',
+# Base mapping for English directory names
+dir_node_exact_matches_base = {
+    '.git'       : '',
+    'Desktop'    : '',
+    'Documents'  : '',
+    'Downloads'  : '',
+    'Dotfiles'   : '',
+    'Dropbox'    : '',
+    'Music'      : '',
+    'Pictures'   : '',
+    'Public'     : '',
+    'Templates'  : '',
+    'Videos'     : '',
+    'anaconda3'  : '',
+    'go'         : '',
+    'workspace'  : '',
+    'OneDrive'   : '',
 }
+
+
+# Mapping of localized directory names to their English counterparts.
+# Languages are loaded from separate modules in :mod:`ranger_devicons.locales`.
+dir_name_translations = {}
+
+
+def load_translations(lang=None):
+    """Load directory name translations for the given language."""
+    if lang is None:
+        lang = os.getenv('DEVICONS_LANG')
+        if not lang:
+            loc = locale.getdefaultlocale()[0]
+            if loc:
+                lang = loc.split('_')[0]
+    if not lang:
+        return {}
+    try:
+        module = importlib.import_module(f'ranger_devicons.locales.{lang}')
+        return getattr(module, 'translations', {})
+    except ModuleNotFoundError:
+        return {}
+
+
+# Populate translations for the current locale
+dir_name_translations.update(load_translations())
+
+
+# Working mapping used by the plugin
+dir_node_exact_matches = dict(dir_node_exact_matches_base)
+
+
+def translate_dir_name(name):
+    """Translate localized directory names to English."""
+    return dir_name_translations.get(name, name)
 
 # Python 2.x-3.4 don't support unpacking syntex `{**dict}`
 # XDG_USER_DIRS
@@ -453,7 +412,8 @@ def devicon(file):
     """Return the devicon for the given ranger file object."""
 
     if file.is_directory:
-        return dir_node_exact_matches.get(file.relative_path, '')
+        dir_name = translate_dir_name(file.relative_path)
+        return dir_node_exact_matches.get(dir_name, '')
     return file_node_exact_matches.get(
         os.path.basename(file.relative_path),
         file_node_extensions.get(file.extension, ''),

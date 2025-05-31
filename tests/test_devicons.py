@@ -58,3 +58,17 @@ def test_devicon_unknown():
     devicons = reload_devicons('es')
     file = MockFile('unknown.unknown')
     assert devicons.devicon(file) == ''
+
+
+def test_unmapped_directory_returns_default(monkeypatch):
+    monkeypatch.setenv('XDG_DOWNLOAD_DIR', '/tmp/downloads')
+    devicons = reload_devicons('es')
+    file = MockFile('RandomDir', is_directory=True)
+    assert devicons.devicon(file) == ''
+
+
+def test_uncommon_extension_returns_default(monkeypatch):
+    monkeypatch.setenv('XDG_DOWNLOAD_DIR', '/tmp/downloads')
+    devicons = reload_devicons('es')
+    file = MockFile('file.xyz')
+    assert devicons.devicon(file) == ''

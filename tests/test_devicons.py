@@ -79,9 +79,24 @@ def test_uncommon_extension_returns_default(monkeypatch):
         ("image.png", ""),
         ("archive.tar", ""),
         ("Makefile", ""),
+        ("Dockerfile", ""),
         ("package.json", ""),
     ],
 )
 def test_devicon_various_examples(name, expected):
     devicons = reload_devicons('es')
     assert devicons.devicon(MockFile(name)) == expected
+
+
+def test_devicon_capitalized_extension_returns_default(monkeypatch):
+    monkeypatch.setenv('XDG_DOWNLOAD_DIR', '/tmp/downloads')
+    devicons = reload_devicons('es')
+    file = MockFile('example.PY')
+    assert devicons.devicon(file) == ''
+
+
+def test_devicon_xdg_trailing_slash(monkeypatch):
+    monkeypatch.setenv('XDG_PICTURES_DIR', '/tmp/Pictures/')
+    devicons = reload_devicons('es')
+    file = MockFile('Pictures', is_directory=True)
+    assert devicons.devicon(file) == ''

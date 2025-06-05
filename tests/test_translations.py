@@ -24,3 +24,14 @@ def test_load_translations_and_translate(monkeypatch):
 def test_load_translations_unknown(monkeypatch):
     monkeypatch.delenv('DEVICONS_LANG', raising=False)
     assert devicons.load_translations('unknown') == {}
+
+
+def test_locale_used_when_env_unset(monkeypatch):
+    """Translations fall back to the system locale when DEVICONS_LANG is unset."""
+    monkeypatch.delenv('DEVICONS_LANG', raising=False)
+    monkeypatch.setattr('locale.getdefaultlocale', lambda: ('fr_FR', 'UTF-8'))
+
+    importlib.reload(devicons)
+
+    assert devicons.dir_name_translations == fr.translations
+    assert devicons.load_translations() == fr.translations
